@@ -18,9 +18,11 @@
         android:id="@+id/Serch"
         android:layout_width="339dp"
         android:layout_height="38dp"
+        android:layout_marginTop="4dp"
         android:background="@color/blue500"
         android:text="Поиск"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,14 +42,24 @@
 
     <TableLayout
         android:id="@+id/dbOutput"
-        android:layout_width="match_parent"
+        android:layout_width="412dp"
 
-        android:layout_height="0dp"
+        android:layout_height="496dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner4">
 
     </TableLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/dbOutput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

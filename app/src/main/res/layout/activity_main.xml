@@ -4,51 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue1000"
     tools:context=".MainActivity">
-
-
-    <Spinner
-        android:id="@+id/spinner5"
-        android:layout_width="103dp"
-        android:layout_height="33dp"
-        tools:layout_editor_absoluteX="292dp"
-        tools:layout_editor_absoluteY="50dp" />
 
     <TextView
         android:id="@+id/Serch"
-        android:layout_width="339dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:background="@color/blue500"
         android:text="Поиск"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tab"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="103dp"
-        android:layout_height="33dp"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="50dp" />
+    <TableRow
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/Serch"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_weight="1">
 
-    <Spinner
-        android:id="@+id/spinner4"
-        android:layout_width="103dp"
-        android:layout_height="33dp"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="50dp" />
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:background="@color/blue500" />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:background="@color/blue500" />
+
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:background="@color/blue500" />
+
+    </TableRow>
+
+
 
     <TableLayout
         android:id="@+id/dbOutput"
         android:layout_width="412dp"
 
-        android:layout_height="496dp"
+        android:layout_height="330dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner4">
+        app:layout_constraintTop_toBottomOf="@+id/tab">
 
     </TableLayout>
 
@@ -57,9 +72,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/dbOutput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner4" />
+        app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

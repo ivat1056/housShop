@@ -6,42 +6,65 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-Connection connection;
+    Connection connection;
+    List<Mask> data;
+    ListView listView;
+    AdapterMask pAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btnconnect=(Button) findViewById(R.id.button);
-        btnconnect.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                TextView Name=(TextView) findViewById(R.id.Serch);
-                ConSQL c= new ConSQL();
-                  connection =  c.conclass();
-                if(c !=null){
-                    try {
-                        String sqlstatement = "Select Name from Category";
-                        Statement smt = connection.createStatement();
-                        ResultSet set = smt.executeQuery(sqlstatement);
-                        while (set.next()) {
-                            Name.setText(set.getString(2));
-                        }
-                        connection.close();
-                    }
-                    catch (Exception e)
-                    {
-                        Log.e("Error: ",e.getMessage());
-                    }
+
+        GetTextFromSQL();
+    }
+    public void enterMobile() {
+        pAdapter.notifyDataSetInvalidated();
+        listView.setAdapter(pAdapter);
+    }
+    public void GetTextFromSQL() {
+        data = new ArrayList<Mask>();
+        listView = findViewById(R.id.lvData);
+        pAdapter = new AdapterMask(MainActivity.this, data);
+        try {
+            ConSQL connectionHelper = new ConSQL();
+            connection = connectionHelper.connectionClass();
+            if (connection != null) {
+                String query = "Select * From Masks";
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+
+                while (resultSet.next()) {
+                    Mask tempMask = new Mask
+                            (resultSet.getInt("ID"),
+                                    resultSet.getString("Title"),
+                                    resultSet.getString("Cost"),
+                                    resultSet.getString("Image")
+                            );
+                    data.add(tempMask);
+                    pAdapter.notifyDataSetInvalidated();
                 }
+                connection.close();
+            } else {
             }
-        });
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        enterMobile();
+
     }
 
 }

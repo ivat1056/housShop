@@ -55,25 +55,20 @@
 
 
 
-    <TableLayout
-        android:id="@+id/dbOutput"
-        android:layout_width="412dp"
 
-        android:layout_height="330dp"
+    <ListView
+        android:id="@+id/lvData"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tab">
+        app:layout_constraintTop_toBottomOf="@id/tab"
+        tools:ignore="UsingOnClickInXml" />
 
-    </TableLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dbOutput" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

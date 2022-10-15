@@ -30,8 +30,7 @@ public class ConSQL {
         String ConnectionURL = null;
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            ConnectionURL= "jdbc:jtds:sqlserver://"+ ip + ":"+ port+";"+
-                    "databasename="+ database+";user="+uName+";password="+password+";";
+            ConnectionURL= "jdbc:jtds:sqlserver://"+ ip + ":"+ port+";"+ "databasename="+ database+";user="+uName+";password="+password+";";
             connection = DriverManager.getConnection(ConnectionURL);
 
         } catch (Exception ex) {

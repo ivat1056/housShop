@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -42,18 +43,22 @@ public class MainActivity extends AppCompatActivity {
         try {
             ConSQL connectionHelper = new ConSQL();
             connection = connectionHelper.connectionClass();
+
             if (connection != null) {
-                String query = "Select * From Masks";
+
+
+                String query = "Select ID, Name, Cost, Photo  From Shop";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
-
+                Toast.makeText(this, " 21212"+ resultSet, Toast.LENGTH_LONG).show();
                 while (resultSet.next()) {
                     Mask tempMask = new Mask
                             (resultSet.getInt("ID"),
-                                    resultSet.getString("Title"),
+                                    resultSet.getString("Name"),
                                     resultSet.getString("Cost"),
-                                    resultSet.getString("Image")
+                                    resultSet.getString("Photo")
                             );
+
                     data.add(tempMask);
                     pAdapter.notifyDataSetInvalidated();
                 }

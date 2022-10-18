@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 String query = "Select ID, Name, Cost, Photo  From Shop";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
-                Toast.makeText(this, " 21212"+ resultSet, Toast.LENGTH_LONG).show();
                 while (resultSet.next()) {
                     Mask tempMask = new Mask
                             (resultSet.getInt("ID"),
@@ -64,7 +63,10 @@ public class MainActivity extends AppCompatActivity {
                     pAdapter.notifyDataSetInvalidated();
                 }
                 connection.close();
-            } else {
+            }
+            else
+            {
+
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -2,6 +2,7 @@ package com.example.housshop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -71,5 +72,9 @@ public class MainActivity extends AppCompatActivity {
         enterMobile();
 
     }
+    public void operationAdd(View view) {
 
+        Intent intent = new Intent(this, Main_ActivityAdd_in_Date.class);
+        startActivity(intent);
+    }
 }

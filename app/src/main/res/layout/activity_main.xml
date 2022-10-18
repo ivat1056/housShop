@@ -16,6 +16,7 @@
         android:layout_marginEnd="5dp"
         android:background="@color/blue500"
         android:text="Поиск"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/tab"
@@ -36,14 +37,17 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
-                android:background="@color/blue500" />
+                android:background="@color/blue500"
+                android:entries="@array/SpinnerCategory"/>
 
             <Spinner
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
-                android:background="@color/blue500" />
+                android:background="@color/blue500"
+                android:entries="@array/Spinnertype_of"
+                />
 
 
             <Spinner
@@ -51,20 +55,33 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
-                android:background="@color/blue500" />
+                android:background="@color/blue500"
+                android:entries="@array/SpinnerPrice"/>
 
     </TableRow>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/SerchBt"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/black"
+        android:background="@drawable/background_btn"
+        android:text="Найти"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toTopOf="@id/Addbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tab" />
+    <Button
+        android:id="@+id/Addbtn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/background_btn"
         android:text="Добавить"
         app:layout_constraintBottom_toTopOf="@id/lvData"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tab" />
+        app:layout_constraintTop_toBottomOf="@+id/SerchBt" />
 
     <ListView
         android:id="@+id/lvData"
@@ -75,7 +92,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button1"
+        app:layout_constraintTop_toBottomOf="@id/Addbtn"
         tools:ignore="UsingOnClickInXml" >
 
 

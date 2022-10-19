@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,13 +28,14 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity {
     ListView listView;
     AdapterMask pAdapter;
 
-    EditText editName, editPrice, editSpinH, editSpinP;
+    EditText editName, editPrice;
     Spinner SpinnerHouse, SpinnerType;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_add_in_date);
+
+
 
 
 
@@ -52,14 +54,23 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity {
         listView = findViewById(R.id.lvData);
         pAdapter = new AdapterMask(Main_ActivityAdd_in_Date.this, data);
 
-        editName = (EditText) findViewById(R.id.NameO);
-        editPrice = (EditText) findViewById(R.id.PriceO);
+        editName = findViewById(R.id.NameO);
+        editPrice = findViewById(R.id.PriceO);
 
-        Spinner spinner1 = (Spinner)findViewById(R.id.SpinnerHouse);
+        EditText edtH = (EditText)findViewById(R.id.NameO); // название
+        String editH = edtH.getText().toString();
+
+        EditText edtP = (EditText)findViewById(R.id.PriceO); // Цена
+        String editP = edtP.getText().toString();
+
+
+        Spinner spinner1 = (Spinner)findViewById(R.id.SpinnerHouse); // спинер категории
         String spinHouse = spinner1.getSelectedItem().toString();
 
-        Spinner spinner2 = (Spinner)findViewById(R.id.SpinnerType);
+        Spinner spinner2 = (Spinner)findViewById(R.id.SpinnerType); // спинер типа
         String spinType = spinner2.getSelectedItem().toString();
+
+
 
 
         if (TextUtils.isEmpty(editName.getText().toString())) {
@@ -74,7 +85,7 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity {
                 connection = connectionHelper.connectionClass();
 
                 if (connection != null) {
-                    String query = "INSERT INTO Shop(Category, type_of,Name, Cost) VALUES ('" + spinHouse + "', '" + spinType + "','" + editPrice.getText()  + "', '" + editName.getText()  + "', ) " ;
+                    String query = "INSERT INTO Shop(Category, type_of,Name, Cost, Photo) VALUES ('" + spinHouse + "', '" + spinType + "','" + editH + "', '" +  editP + "', 'NULL' ) " ;
                     Statement stmt = connection.createStatement();
                     stmt.executeUpdate(query);
                 }
@@ -84,9 +95,15 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity {
             {
                 Log.e("Ошибка", se.getMessage());
             }
-            enterMobile();
-
+            editName.getText().clear();
+            editPrice.getText().clear();
+            Toast.makeText(this, "Запись успешно добавлена", Toast.LENGTH_LONG).show();
         }
+    }
+    public void Bace_main(View view) {
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
 

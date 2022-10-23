@@ -101,6 +101,7 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity {
                 imageView.setImageBitmap(null);
                 imageView.setImageBitmap(bitmap);
                 Image = BitMapToString(bitmap);
+
             }
 
         }
@@ -157,9 +158,16 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity {
             try {
                 ConSQL connectionHelper = new ConSQL();
                 connection = connectionHelper.connectionClass();
-
+                String query = "";
                 if (connection != null) {
-                    String query = "INSERT INTO Shop(Category, type_of,Name, Cost, Photo) VALUES ('" + spinHouse + "', '" + spinType + "','" + editH + "', '" +  editP + "', '" + Image + "') " ;
+                    if (Image == "")
+                    {
+                        query = "INSERT INTO Shop(Category, type_of,Name, Cost) VALUES ('" + spinHouse + "', '" + spinType + "','" + editH + "', '" +  editP + "') " ;
+                    }
+                    else
+                    {
+                         query = "INSERT INTO Shop(Category, type_of,Name, Cost, Photo) VALUES ('" + spinHouse + "', '" + spinType + "','" + editH + "', '" + editP + "', '" + Image + "') ";
+                    }
                     Statement stmt = connection.createStatement();
                     stmt.executeUpdate(query);
                 }

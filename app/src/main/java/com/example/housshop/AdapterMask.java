@@ -55,7 +55,7 @@ public class AdapterMask extends BaseAdapter {
 
         TextView Title = v.findViewById(R.id.Title);
         TextView Cost= v.findViewById(R.id.Cost);
-        ImageView Image = v.findViewById(R.id.imageView);
+        ImageView Image = v.findViewById(R.id.Image);
 
         Mask mask = maskList.get(position);
         Title.setText(mask.getTitle());

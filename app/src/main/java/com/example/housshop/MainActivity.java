@@ -1,6 +1,7 @@
 package com.example.housshop;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,17 +27,25 @@ public class MainActivity extends AppCompatActivity {
     List<Mask> data;
     ListView listView;
     AdapterMask pAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); ///
 
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         GetTextFromSQL();
     }
     public void enterMobile() {
         pAdapter.notifyDataSetInvalidated();
         listView.setAdapter(pAdapter);
     }
+
+
+
+
+
+
     public void GetTextFromSQL() {
         data = new ArrayList<Mask>();
         listView = findViewById(R.id.lvData);
@@ -48,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
             if (connection != null) {
 
 
-                String query = "Select ID, Name, Cost, Photo  From Shop";
+
+                String query = "Select *  From Shop";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {

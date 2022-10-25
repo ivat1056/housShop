@@ -10,13 +10,13 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="387dp"
-        android:layout_height="312dp"
+        android:layout_width="384dp"
+        android:layout_height="326dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="268dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/imageno" />
 
     <EditText
         android:id="@+id/NameO"

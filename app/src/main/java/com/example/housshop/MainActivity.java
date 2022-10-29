@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -22,46 +23,55 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
     Connection connection;
     List<Mask> data;
     ListView listView;
     AdapterMask pAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); ///
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         GetTextFromSQL();
     }
-    public void enterMobile() {
+    public void enterMobile()
+    {
         pAdapter.notifyDataSetInvalidated();
         listView.setAdapter(pAdapter);
     }
-
-
-
-
-
 
     public void GetTextFromSQL() {
         data = new ArrayList<Mask>();
         listView = findViewById(R.id.lvData);
         pAdapter = new AdapterMask(MainActivity.this, data);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long ID)
+            {
+                DateForClick((int) ID);
+            }
+        });
+
         try {
             ConSQL connectionHelper = new ConSQL();
             connection = connectionHelper.connectionClass();
 
-            if (connection != null) {
+            if (connection != null)
+            {
 
 
 
                 String query = "Select *  From Shop";
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
-                while (resultSet.next()) {
+                while (resultSet.next())
+                {
                     Mask tempMask = new Mask
                             (resultSet.getInt("ID"),
                                     resultSet.getString("Name"),
@@ -78,15 +88,26 @@ public class MainActivity extends AppCompatActivity {
             {
 
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException throwables)
+        {
             throwables.printStackTrace();
         }
         enterMobile();
 
     }
-    public void operationAdd(View view) {
+    public void operationAdd(View view)
+    {
 
         Intent intent = new Intent(this, Main_ActivityAdd_in_Date.class);
         startActivity(intent);
+    }
+    public void DateForClick(int ID)
+    {
+        Intent intent = new Intent(this, Main_Update_in_dateBase.class);
+        Bundle b = new Bundle();
+        b.putInt("ID", ID);
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
     }
 }

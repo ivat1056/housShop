@@ -7,7 +7,7 @@
     android:background="@color/blue1000"
     tools:context=".MainActivity">
 
-    <TextView
+    <EditText
         android:id="@+id/Serch"
         android:layout_width="match_parent"
         android:layout_height="35dp"
@@ -15,7 +15,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:background="@color/blue500"
-        android:text="Поиск"
+        android:hint="Поиск"
         android:textSize="18dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintEnd_toEndOf="parent"

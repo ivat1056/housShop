@@ -57,6 +57,10 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
         EditText Name1 = findViewById(R.id.NameO);
         EditText Price = findViewById(R.id.PriceO);
 
+        spinner1 = findViewById(R.id.SpinnerHouse);
+
+        spinner2 = findViewById(R.id.SpinnerType);
+
         try {
             ConSQL connectionHelper = new ConSQL();
             connection = connectionHelper.connectionClass();
@@ -68,14 +72,13 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
                 while (resultSet.next())
                 {
                     String Category = resultSet.getString(1);
-                    spinner1.setSelection(Integer.parseInt(Category));
+                    spinner1.setSelection(Spinner1(Category));
                     String type_of = resultSet.getString(2);
-                    spinner2.setSelection(Integer.parseInt(type_of));
+                    spinner2.setSelection(Spinner2(type_of));
                     String Name = resultSet.getString(3);
-                    editName.setText(Name);
+                    Name1.setText(Name);
                     String Cost = resultSet.getString(4);
-                    //Toast.makeText(this, Cost, Toast.LENGTH_LONG).show();
-                    editName.setText(Cost);
+                  Price.setText(Cost);
                 }
                 connection.close();
             }
@@ -88,10 +91,6 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
         {
             throwables.printStackTrace();
         }
-        enterMobile();
-
-
-
 
 
 
@@ -121,9 +120,41 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
 
     }
 
+    public int Spinner1(String index)
+    {
+        if (index.equals("Квартира" ))
+        {
+            return 1;
+        }
+        if (index.equals("Коттедж" ))
+        {
+            return 2;
+        }
+        if (index.equals("Коммерческая недвижимость" ))
+        {
+            return 3;
+        }
+        if (index.equals("Недвижимость за рубежом" ))
+        {
+            return 4;
+        }
+        else
+        {
+            return 5;
+        }
+    }
 
-
-
+    public int Spinner2(String index)
+    {
+        if (index.equals("Аренда" ))
+        {
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
+    }
 
     private Bitmap getBitmapFromUri(Uri uri) throws IOException
     {
@@ -183,19 +214,12 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
 
 
 
-
-    public void enterMobile()
-    {
-        pAdapter.notifyDataSetInvalidated();
-        listView.setAdapter(pAdapter);
-    }
-
     public void UPD_inDate_base(View view)
     {
-        data = new ArrayList<Mask>();
-        listView = findViewById(R.id.lvData);
-        pAdapter = new AdapterMask(Main_Update_in_dateBase.this, data);
 
+
+        editName = findViewById(R.id.NameO);
+        editPrice = findViewById(R.id.PriceO);
 
         EditText edtH = (EditText)findViewById(R.id.NameO); // название
         String editH = edtH.getText().toString();
@@ -226,7 +250,7 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
                 String query = "";
                 if (connection != null)
                 {
-                    query = "UPDATE Shop SET Category = '" + spinHouse + "', type_of = '" + spinType + "', Name = '" + editH + "', Cost = '" + editP + "', Photo = '" + Image + "'";
+                    query = "UPDATE Shop SET Category = '" + spinHouse + "', type_of = '" + spinType + "', Name = '" + editH + "', Cost = '" + editP + "', Photo = '" + Image + "' WHERE ID = '" + idObjekt + "'";
                     Statement stmt = connection.createStatement();
                     stmt.executeUpdate(query);
                 }

@@ -54,6 +54,8 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
         idObjekt = arguments.getInt("ID");
 
 
+
+
         EditText Name1 = findViewById(R.id.NameO);
         EditText Price = findViewById(R.id.PriceO);
 

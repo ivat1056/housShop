@@ -264,4 +264,10 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
             Toast.makeText(this, "Запись успешно добавлена", Toast.LENGTH_LONG).show();
         }
     }
+    public void Bace_main(View view)
+    {
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

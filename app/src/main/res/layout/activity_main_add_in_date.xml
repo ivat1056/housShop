@@ -10,14 +10,15 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="384dp"
-        android:layout_height="326dp"
-        android:layout_marginTop="268dp"
-        app:layout_constraintBottom_toTopOf="@+id/Back"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/imageno" />
+        app:layout_constraintBottom_toTopOf="@+id/Back"
+        app:layout_constraintTop_toBottomOf="@id/AddPhoto"
+        app:srcCompat="@drawable/imageno"
+        />
 
     <EditText
         android:id="@+id/NameO"

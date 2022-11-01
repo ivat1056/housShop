@@ -88,18 +88,20 @@
         android:text="Изменить фото"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UPDbtn" />
+        app:layout_constraintTop_toBottomOf="@+id/UPDbtn"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"/>
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="380dp"
-        android:layout_height="320dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/UPDbtn"
-        app:srcCompat="@drawable/imageno" />
+        app:layout_constraintBottom_toTopOf="@+id/dell"
+        app:layout_constraintTop_toBottomOf="@id/UPD_Photo"
+        app:srcCompat="@drawable/imageno"
+         />
 
     <Button
         android:id="@+id/dell"
@@ -107,7 +109,8 @@
         android:layout_height="48dp"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/background_btn"
         android:onClick="Dell_btn"
         android:text="Удалить запись"
@@ -121,8 +124,8 @@
         android:layout_height="48dp"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/background_btn"
         android:onClick="Bace_main"
         android:text="Назад"

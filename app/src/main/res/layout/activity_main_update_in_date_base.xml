@@ -9,15 +9,7 @@
     tools:context=".Main_Update_in_dateBase">
 
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="384dp"
-        android:layout_height="326dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="268dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/imageno" />
+
 
     <EditText
         android:id="@+id/NameO"
@@ -83,32 +75,61 @@
         android:onClick="UPD_inDate_base"
         android:text="Сохранить"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tab2" />
 
     <Button
         android:id="@+id/UPD_Photo"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_margin="5dp"
         android:background="@drawable/background_btn"
-        android:text="Изменить фото"
         android:onClick="UPD_Photo"
+        android:text="Изменить фото"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UPDbtn" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="380dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/UPDbtn"
+        app:srcCompat="@drawable/imageno" />
+
+    <Button
+        android:id="@+id/dell"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/background_btn"
+        android:onClick="Dell_btn"
+        android:text="Удалить запись"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
     <Button
         android:id="@+id/Back"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="5dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="0dp"
         android:background="@drawable/background_btn"
-        android:text="Назад"
         android:onClick="Bace_main"
+        android:text="Назад"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/dell" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

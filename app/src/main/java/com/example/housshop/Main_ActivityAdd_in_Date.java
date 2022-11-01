@@ -64,6 +64,14 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity
     }
 
 
+
+
+
+
+
+
+
+
     public void ADD_Photo (View view){
 
     }
@@ -116,7 +124,7 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity
     public String BitMapToString(Bitmap bitmap)
     {
         ByteArrayOutputStream baos = new  ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+        bitmap.compress(Bitmap.CompressFormat. JPEG ,100, baos);
         byte [] b = baos.toByteArray();
         String temp = Base64.encodeToString(b,Base64.DEFAULT);
         return temp;
@@ -178,6 +186,7 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity
             editName.getText().clear();
             editPrice.getText().clear();
             Toast.makeText(this, "Запись успешно добавлена", Toast.LENGTH_LONG).show();
+            Bace_main(view);
         }
     }
     public void Bace_main(View view)

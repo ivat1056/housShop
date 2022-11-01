@@ -12,8 +12,9 @@
         android:id="@+id/imageView3"
         android:layout_width="384dp"
         android:layout_height="326dp"
-        android:layout_marginStart="12dp"
         android:layout_marginTop="268dp"
+        app:layout_constraintBottom_toTopOf="@+id/Back"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/imageno" />
@@ -25,7 +26,7 @@
         android:hint="Название"
         android:layout_margin="5dp"
         android:background="@color/blue500"
-
+        app:layout_constraintTop_toTopOf="parent"
         android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/PriceO"
         app:layout_constraintStart_toStartOf="parent" />
@@ -38,7 +39,7 @@
         android:background="@color/blue500"
         android:layout_height="35dp"
         android:hint="Цена"
-
+        app:layout_constraintTop_toTopOf="parent"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/NameO" />

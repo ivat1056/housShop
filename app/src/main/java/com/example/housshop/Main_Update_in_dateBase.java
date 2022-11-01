@@ -112,9 +112,7 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
             }
         });
 
-
         SelectionData_in_dataBase();
-
 
     }
 
@@ -199,7 +197,7 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
     public String BitMapToString(Bitmap bitmap)
     {
         ByteArrayOutputStream baos = new  ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100, baos);
         byte [] b = baos.toByteArray();
         String temp = Base64.encodeToString(b,Base64.DEFAULT);
         return temp;
@@ -263,7 +261,8 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
             }
             editName.getText().clear();
             editPrice.getText().clear();
-            Toast.makeText(this, "Запись успешно изменена", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Запись успешно изменена и сохранена", Toast.LENGTH_LONG).show();
+            Bace_main(view);
         }
     }
     public void Bace_main(View view)
@@ -271,5 +270,26 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
 
         Intent intentbtn = new Intent(this, MainActivity.class);
         startActivity(intentbtn);
+    }
+    public void Dell_btn(View view)
+    {
+        try
+        {
+            ConSQL connectionHelper = new ConSQL();
+            connection = connectionHelper.connectionClass();
+            String query = "";
+            if (connection != null)
+            {
+                query = "Delete From Shop where ID = " + idObjekt;
+                Statement stmt = connection.createStatement();
+                stmt.executeUpdate(query);
+            }
+        }
+        catch (SQLException se)
+        {
+            Log.e("Ошибка", se.getMessage());
+        }
+        Toast.makeText(this, "Запись успешно удалена", Toast.LENGTH_LONG).show();
+        Bace_main(view);
     }
 }

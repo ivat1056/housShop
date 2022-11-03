@@ -29,12 +29,13 @@
         android:id="@+id/tab"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="2dp"
+        android:layout_margin="10dp"
         app:layout_constraintTop_toBottomOf="@id/Serch"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_weight="1">
 
             <Spinner
+                android:id="@+id/SpinnerHouse"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -43,6 +44,7 @@
                 android:entries="@array/SpinnerCategory"/>
 
             <Spinner
+                android:id="@+id/SpinnerType"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -53,6 +55,7 @@
 
 
             <Spinner
+                android:id="@+id/SpinnerSort"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -64,27 +67,62 @@
 
     <Button
         android:id="@+id/SerchBt"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:background="@drawable/background_btn"
+        android:onClick="Serch_on_click"
         android:text="Найти"
+        android:gravity="center"
         android:layout_margin="5dp"
-        app:layout_constraintBottom_toTopOf="@id/Addbtn"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/SortBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tab" />
+
+
+    <Button
+        android:id="@+id/SortBtn"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/background_btn"
+        android:onClick="Sort_on_click"
+        android:text="Применить фильтры"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/SerchBt"
+        app:layout_constraintTop_toBottomOf="@+id/tab"
+         />
+
     <Button
         android:id="@+id/Addbtn"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_margin="5dp"
         android:background="@drawable/background_btn"
         android:text="Добавить"
+        android:textAlignment="center"
         android:onClick="operationAdd"
+        android:layout_margin="10dp"
         app:layout_constraintBottom_toTopOf="@id/lvData"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SerchBt" />
+
+    <TextView
+        android:id="@+id/dellSerch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:color="@color/blue500"
+        android:onClick="dellSerch"
+        android:text="Сбросить"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/Addbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/lvData"/>
 
     <ListView
         android:id="@+id/lvData"

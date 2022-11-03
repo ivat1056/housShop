@@ -9,8 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity
     List<Mask> data;
     ListView listView;
     AdapterMask pAdapter;
+    EditText SerchS;
+    String query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,7 +41,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main); ///
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-        GetTextFromSQL();
+        query = "Select *  From Shop";
+        GetTextFromSQL(query);
+
     }
     public void enterMobile()
     {
@@ -45,7 +51,7 @@ public class MainActivity extends AppCompatActivity
         listView.setAdapter(pAdapter);
     }
 
-    public void GetTextFromSQL() {
+    public void GetTextFromSQL(String query) {
         data = new ArrayList<Mask>();
         listView = findViewById(R.id.lvData);
         pAdapter = new AdapterMask(MainActivity.this, data);
@@ -67,7 +73,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-                String query = "Select *  From Shop";
+
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next())
@@ -109,5 +115,140 @@ public class MainActivity extends AppCompatActivity
         intent.putExtras(b);
         startActivity(intent);
         finish();
+    }
+    public int Spinner1(String index) // тип категории
+    {
+        if (index.equals("Квартира" ))
+        {
+            return 1;
+        }
+        if (index.equals("Коттедж" ))
+        {
+            return 2;
+        }
+        if (index.equals("Коммерческая недвижимость" ))
+        {
+            return 3;
+        }
+        if (index.equals("Недвижимость за рубежом" ))
+        {
+            return 4;
+        }
+        else
+        {
+            return 5;
+        }
+    }
+
+    public int Spinner2(String index) // тип сделки
+    {
+        if (index.equals("Аренда" ))
+        {
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
+    }
+
+    public int Spinner3(String index) // сортировка
+    {
+        if (index.equals("Возрастание" ))
+        {
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
+    }
+
+    public void dellSerch(View view)
+    {   EditText serch = findViewById(R.id.Serch);
+        Spinner spinner1  = findViewById(R.id.SpinnerHouse); // категория
+        Spinner spinner2 = findViewById(R.id.SpinnerType); // тип сделки
+        Spinner spinner3 = findViewById(R.id.SpinnerSort); // убывания / возрастания
+        spinner1.setSelection(0);
+        spinner2.setSelection(0);
+        spinner3.setSelection(0);
+        serch.setText("");
+        Serch_on_click(view);
+        TextView dellS = findViewById(R.id.dellSerch);
+        dellS.setVisibility(View.GONE);
+    }
+
+
+    public void Serch_on_click(View view)
+    {
+        data = new ArrayList<Mask>();
+        listView = findViewById(R.id.lvData);
+        pAdapter = new AdapterMask(MainActivity.this, data);
+
+        SerchS = findViewById(R.id.Serch); // поисковый запрос
+        String SelectSerch = SerchS.getText().toString();
+
+
+
+            ConSQL connectionHelper = new ConSQL();
+            connection = connectionHelper.connectionClass();
+            String query = "";
+            if (connection != null)
+            {
+                query = "Select * From Shop where Name  LIKE '%" + SelectSerch + "%'";
+                GetTextFromSQL(query);
+            }
+
+
+
+        TextView dellS = findViewById(R.id.dellSerch);
+        dellS.setVisibility(View.VISIBLE);
+
+
+
+
+    }
+
+    public void Sort_on_click(View view)
+    {
+
+
+        TextView dellS = findViewById(R.id.dellSerch);
+        dellS.setVisibility(View.VISIBLE);
+
+
+
+
+        Spinner spinner1 = (Spinner)findViewById(R.id.SpinnerHouse); // спинер категории
+        String spinHouse = spinner1.getSelectedItem().toString();
+
+        Spinner spinner2 = (Spinner)findViewById(R.id.SpinnerType); // спинер типа
+        String spinType = spinner2.getSelectedItem().toString();
+
+        Spinner spinner3 = (Spinner)findViewById(R.id.SpinnerSort); // спинер сортировки
+        String spinSort = spinner3.getSelectedItem().toString();
+
+        if(spinSort.equals("Возрастание" ) )
+        {
+            ConSQL connectionHelper = new ConSQL();
+            connection = connectionHelper.connectionClass();
+            if (connection != null)
+            {
+                query = "Select * From Shop where Category ='" + spinHouse +  "' and type_of =  '" + spinType +  "' ORDER BY Name ";
+                GetTextFromSQL(query);
+            }
+        }
+        else
+        {
+            ConSQL connectionHelper = new ConSQL();
+            connection = connectionHelper.connectionClass();
+            String query = "";
+            if (connection != null)
+            {
+                query = "Select * From Shop where Category ='" + spinHouse +  "' and type_of =  '" + spinType +  "' ORDER BY Name DESC ";
+                GetTextFromSQL(query);
+            }
+        }
+
     }
 }

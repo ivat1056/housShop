@@ -68,10 +68,6 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity
 
 
 
-
-
-
-
     public void ADD_Photo (View view){
 
     }
@@ -132,11 +128,6 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity
 
 
 
-
-
-
-
-
     public void ADD_inDate_base(View view)
     {
         data = new ArrayList<Mask>();
@@ -183,8 +174,6 @@ public class Main_ActivityAdd_in_Date extends AppCompatActivity
             {
                 Log.e("Ошибка", se.getMessage());
             }
-            editName.getText().clear();
-            editPrice.getText().clear();
             Toast.makeText(this, "Запись успешно добавлена", Toast.LENGTH_LONG).show();
             Bace_main(view);
         }

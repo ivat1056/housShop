@@ -73,14 +73,23 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next())
                 {
+
                     String Category = resultSet.getString(1);
                     spinner1.setSelection(Spinner1(Category));
+
+
                     String type_of = resultSet.getString(2);
                     spinner2.setSelection(Spinner2(type_of));
+
+
+
+
+
                     String Name = resultSet.getString(3);
-                    Name1.setText(Name);
+                    Name1.setText(Name.replaceAll("\\s+",""));
                     String Cost = resultSet.getString(4);
-                  Price.setText(Cost);
+                    Price.setText(Cost.replaceAll("\\s+",""));
+
                 }
                 connection.close();
             }
@@ -103,44 +112,41 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
 
             public void onClick(View arg0)
             {
-
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
 
+
             }
         });
 
-        SelectionData_in_dataBase();
+
 
     }
 
-    public void UPD_Photo (View view){
-
-    }
 
     public int Spinner1(String index)
     {
         if (index.equals("Квартира" ))
         {
-            return 1;
+            return 0;
         }
         if (index.equals("Коттедж" ))
         {
-            return 2;
+            return 1;
         }
         if (index.equals("Коммерческая недвижимость" ))
         {
-            return 3;
+            return 2;
         }
         if (index.equals("Недвижимость за рубежом" ))
         {
-            return 4;
+            return 3;
         }
         else
         {
-            return 5;
+            return 4;
         }
     }
 
@@ -148,13 +154,14 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
     {
         if (index.equals("Аренда" ))
         {
-            return 1;
+            return 0;
         }
         else
         {
-            return 2;
+            return 1;
         }
     }
+
 
     private Bitmap getBitmapFromUri(Uri uri) throws IOException
     {
@@ -206,17 +213,12 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
 
 
 
-    public void SelectionData_in_dataBase()
-    {
 
-
-    }
 
 
 
     public void UPD_inDate_base(View view)
     {
-
 
         editName = findViewById(R.id.NameO);
         editPrice = findViewById(R.id.PriceO);
@@ -259,12 +261,13 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
             {
                 Log.e("Ошибка", se.getMessage());
             }
-            editName.getText().clear();
-            editPrice.getText().clear();
             Toast.makeText(this, "Запись успешно изменена и сохранена", Toast.LENGTH_LONG).show();
             Bace_main(view);
         }
     }
+
+
+
     public void Bace_main(View view)
     {
 
@@ -292,5 +295,6 @@ public class Main_Update_in_dateBase extends AppCompatActivity {
         Toast.makeText(this, "Запись успешно удалена", Toast.LENGTH_LONG).show();
         Bace_main(view);
     }
+
 
 }
